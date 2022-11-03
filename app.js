@@ -44,3 +44,24 @@ function stopWatch() {
 }
 
 // window.setInterval(stopWatch, 1000);
+
+startStopBtn.addEventListener("click", () => {
+  if (timerStatus === "stopped") {
+    timerInterval = window.setInterval(stopWatch, 1000);
+    startStopBtn.innerHTML = `<i class="fa-solid fa-pause pause"></i>`;
+    timerStatus = "started";
+  } else {
+    window.clearInterval(timerInterval);
+    startStopBtn.innerHTML = `<i class="fa-solid fa-play"></i>`;
+    timerStatus = "stopped";
+  }
+});
+
+restartBtn.addEventListener("click", () => {
+  window.clearInterval(timerInterval);
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
+
+  document.getElementById("timer").innerHTML = "00:00:00";
+});
